@@ -37,6 +37,13 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/main/jconfirm/jquery-confirm.min.css">
   <?php endif ?>
 
+  <?php if (isset($datepicker)): ?>
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <?php endif ?>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -276,14 +283,6 @@
 
 <!-- Bootstrap 3.3.7 -->
 <script src="<?php echo base_url() ?>assets/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="<?php echo base_url() ?>assets/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="<?php echo base_url() ?>assets/adminlte/bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo base_url() ?>assets/adminlte/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url() ?>assets/adminlte/dist/js/demo.js"></script>
   <?php if (isset($jquery_confirm)): ?>
     <!-- Jquery Confirm -->
     <script src="<?php echo base_url() ?>assets/main/jconfirm/jquery-confirm.min.js"></script>
@@ -296,6 +295,21 @@
     $('.select2').select2()
   </script>
 <?php endif ?>
+
+<?php if (isset($datepicker)): ?>
+  <!-- date-range-picker -->
+  <script src="<?php echo base_url() ?>assets/adminlte/bower_components/moment/min/moment.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <!-- bootstrap datepicker -->
+  <script src="<?php echo base_url() ?>assets/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+  <script>
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+  </script>
+<?php endif ?>
+
 <?php if (isset($icheck)): ?>
   <!-- I-Check -->
   <script src="<?php echo base_url() ?>assets/adminlte/plugins/iCheck/icheck.min.js"></script>
@@ -341,5 +355,13 @@
     })
   </script>
 <?php endif ?>
+<!-- SlimScroll -->
+<script src="<?php echo base_url() ?>assets/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="<?php echo base_url() ?>assets/adminlte/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url() ?>assets/adminlte/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?php echo base_url() ?>assets/adminlte/dist/js/demo.js"></script>
 </body>
 </html>

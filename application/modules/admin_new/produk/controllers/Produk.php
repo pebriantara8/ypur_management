@@ -1,19 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed'); require 'application/modules/admin_new/grab/controllers/Grab.php';
 
-class Transaksi extends Grab {
+class Produk extends Grab {
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('my_m');
 		$this->data['page_title'] = "Users";
-        $this->tabel = 'transaksi';
+        $this->tabel = 'produk';
         $this->id_name = 'id';
 		//Do your magic here
         $this->posts = true;
-        $this->path = './public/user/';
-        $this->new_path = './public/user/thumb/';
+        $this->path = './public/product_image/';
+        $this->new_path = './public/product_image/thumb/';
 	}
 
 	public function index()
@@ -66,7 +66,7 @@ class Transaksi extends Grab {
         $data['no_urut'] = $limit['start']+1;
 		$this->pagination->initialize($config);
 
-        $data['title_content'] = "Transaksi";
+        $data['title_content'] = "Produk";
         $data['select2'] = true;
         $data['jquery_confirm'] = true;
         $data['content'] = "index";
@@ -123,7 +123,7 @@ class Transaksi extends Grab {
         $data['no_urut'] = $limit['start']+1;
 		$this->pagination->initialize($config);
 
-        $data['title_content'] = "Transaksi";
+        $data['title_content'] = "Produk";
         $data['title_content_desc'] = "Arsip";
         $data['select2'] = true;
         $data['jquery_confirm'] = true;
@@ -138,52 +138,9 @@ class Transaksi extends Grab {
             $data['list'] = $dt_post;
             $data['is_edit'] = true;
         }
-        $data['list_t_status'] = $this->wd_db->get_data('transaksi_status');
-        $data['list_member'] = $this->wd_db->get_data('member',['deleted_at'=>null]);
-        $data['list_t_tipe'] = $this->wd_db->get_data('transaksi_tipe');
-        $data['list_produk'] = $this->wd_db->get_data('produk');
-        $data['title_content'] = "Form Transaksi";
+        $data['title_content'] = "Form Gejala";
         $data['select2'] = true;
         $data['jquery_confirm'] = true;
-        $data['datepicker'] = true;
-        $data['content'] = "form";
-        $this->view($data,false);
-    }
-    
-    public function form_piutang($id=null)
-	{
-        $dt_post = $this->wd_db->get_data_row($this->tabel,array($this->id_name=>$id));
-        if($id){
-            $data['list'] = $dt_post;
-            $data['is_edit'] = true;
-        }
-        $data['list_t_status'] = $this->wd_db->get_data('transaksi_status');
-        $data['list_member'] = $this->wd_db->get_data('member',['deleted_at IS'=>null]);
-        $data['list_t_tipe'] = $this->wd_db->get_data('transaksi_tipe');
-        $data['list_produk'] = $this->wd_db->get_data('produk');
-        $data['title_content'] = "Form Transaksi";
-        $data['select2'] = true;
-        $data['jquery_confirm'] = true;
-        $data['datepicker'] = true;
-        $data['content'] = "form";
-        $this->view($data,false);
-    }
-    
-    public function form_bayar_piutang($id=null)
-	{
-        $dt_post = $this->wd_db->get_data_row($this->tabel,array($this->id_name=>$id));
-        if($id){
-            $data['list'] = $dt_post;
-            $data['is_edit'] = true;
-        }
-        $data['list_t_status'] = $this->wd_db->get_data('transaksi_status');
-        $data['list_member'] = $this->wd_db->get_data('member',['deleted_at IS'=>null]);
-        $data['list_t_tipe'] = $this->wd_db->get_data('transaksi_tipe');
-        $data['list_produk'] = $this->wd_db->get_data('produk');
-        $data['title_content'] = "Form Transaksi";
-        $data['select2'] = true;
-        $data['jquery_confirm'] = true;
-        $data['datepicker'] = true;
         $data['content'] = "form";
         $this->view($data,false);
 	}
@@ -212,8 +169,10 @@ class Transaksi extends Grab {
         // }
 
         $ob = array(
-            'nama_premis' => $this->input->post('nama_premis'),
-            'premis_kategori_id' => $this->input->post('premis_kategori_id'),
+            'nama_produk' => $this->input->post('nama_produk'),
+            'harga' => $this->input->post('harga'),
+            'qty' => $this->input->post('qty'),
+            'harga_piutang' => $this->input->post('harga_piutang'),
             'created_at' => date('Y-m-d H:i:s'),
         );
         $qi = $this->db->insert($this->tabel, $ob);
@@ -258,8 +217,10 @@ class Transaksi extends Grab {
         // }
 
         $ob = array(
-            'nama_premis' => $this->input->post('nama_premis'),
-            'premis_kategori_id' => $this->input->post('premis_kategori_id'),
+            'nama_produk' => $this->input->post('nama_produk'),
+            'harga' => $this->input->post('harga'),
+            'qty' => $this->input->post('qty'),
+            'harga_piutang' => $this->input->post('harga_piutang'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         );

@@ -8,7 +8,7 @@
 
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Gejala</h3>
+              <h3 class="box-title">Transaksi</h3>
             </div>
 
             <!-- /.box-header -->
@@ -22,23 +22,76 @@
                 <?php require_once __DIR__."/../../blocks/alert_notification.php"; ?>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Nama Gejala</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Tanggal</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" name="nama_premis" class="form-control" placeholder="Nama" value="<?php echo isset($list) ? $list['nama_premis'] : '' ?>" required="">
+                  <div class="col-sm-3">
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" name="tanggal" class="form-control pull-right datepicker" id="datepicker">
+                    </div>
+                    <!-- <input type="text" name="qty" class="form-control" placeholder=".." value="<?php echo isset($list) ? $list['qty'] : '' ?>" required=""> -->
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Kategori Gejala</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Nama</label>
 
                   <div class="col-sm-10">
                     <select class="select2" name="premis_kategori_id" required="">
-                      <option value="">Kategori Gejala</option>
-                      <?php foreach ($list_kat_premis as $key => $value): ?>
-                          <option <?php echo (isset($list)?$list['premis_kategori_id']:'')==$value['id']?' selected':'' ?> value="<?php echo $value['id'] ?>"><?php echo $value['nama_premis_kategori'] ?></option>
+                      <option value="" selected disabled>Please Select</option>
+                      <?php foreach ($list_member as $key => $vm): ?>
+                          <option <?php echo isset($list)?set_value_select($list['id'],$vm['id']):''?> value="<?php echo $vm['id'] ?>"><?php echo $vm['nama'] ?></option>
                       <?php endforeach ?>
                     </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Produk</label>
+
+                  <div class="col-sm-10">
+                    <select class="select2" name="premis_kategori_id" required="">
+                      <option value="" selected disabled>Please Select</option>
+                      <?php foreach ($list_produk as $key => $vm): ?>
+                          <option <?php echo isset($list)?set_value_select($list['id'],$vm['id']):''?> value="<?php echo $vm['id'] ?>"><?php echo $vm['nama_produk'].' - Rp'.number_format($vm['harga']) ?></option>
+                      <?php endforeach ?>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Tipe Transaksi</label>
+
+                  <div class="col-sm-10">
+                    <select class="select2" name="premis_kategori_id" required="">
+                      <option value="" selected disabled>Please Select</option>
+                      <?php foreach ($list_t_tipe as $key => $vm): ?>
+                          <option <?php echo isset($list)?set_value_select($list['id'],$vm['id']):''?> value="<?php echo $vm['id'] ?>"><?php echo $vm['nama_transaksi_tipe'] ?></option>
+                      <?php endforeach ?>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Status Bayar</label>
+
+                  <div class="col-sm-10">
+                    <select class="select2" name="premis_kategori_id" required="">
+                      <option value="" selected disabled>Please Select</option>
+                      <?php foreach ($list_t_tipe as $key => $vm): ?>
+                          <option <?php echo isset($list)?set_value_select($list['premis_kategori_id'],$vm['id']):''?> value="<?php echo $vm['id'] ?>"><?php echo $vm['nama_transaksi_tipe'] ?></option>
+                      <?php endforeach ?>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Kuantitas</label>
+
+                  <div class="col-sm-2">
+                    <input type="text" name="qty" class="form-control" placeholder=".." value="<?php echo isset($list) ? $list['qty'] : '' ?>" required="">
                   </div>
                 </div>
 

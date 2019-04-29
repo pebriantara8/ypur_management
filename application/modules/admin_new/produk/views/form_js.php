@@ -1,7 +1,4 @@
 <script>
-$('#datepicker2').datepicker({
-    autoclose: true
-})
 
 $("#frm_ed_img").on('submit',(function(e) {
 e.preventDefault();

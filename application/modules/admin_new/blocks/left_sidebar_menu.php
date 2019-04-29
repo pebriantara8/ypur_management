@@ -50,8 +50,17 @@
         </li>
 
         <li>
-          <a href="<?= backend_url().'konklusi' ?>">
+          <a href="<?= backend_url().'transaksi' ?>">
             <i class="fa fa fa-files-o"></i> <span>Daftar Transaksi</span>
+            <span class="pull-right-container">
+              <!-- <small class="label pull-right bg-red">3</small> -->
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?= backend_url().'produk' ?>">
+            <i class="fa fa fa-th"></i> <span>Produk</span>
             <span class="pull-right-container">
               <!-- <small class="label pull-right bg-red">3</small> -->
             </span>
